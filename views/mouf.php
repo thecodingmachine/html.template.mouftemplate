@@ -7,9 +7,13 @@
 		if ($this->favIconUrl) { ?>
 		<link rel="icon" type="image/png" href="<?php echo ROOT_URL.$this->favIconUrl; ?>" />
 		<?php } ?>
-		<link href="<?php self::TEMPLATE_ROOT_URL ?>css/style.css" rel="stylesheet" type="text/css" />
-		<title><?php print $this->title ?></title>
-		<?php print $this->getWebLibraryManager()->toHtml(); ?>
+		<link href="<?php echo ROOT_URL.self::TEMPLATE_ROOT_URL ?>css/style.css" rel="stylesheet" type="text/css" />
+		<title><?php echo $this->getTitle() ?></title>
+		<?php 
+		$webLibraryManager = $this->getWebLibraryManager();
+		if ($webLibraryManager) {
+			$this->getWebLibraryManager()->toHtml();
+		} ?>
 	</head>
 	<?php
 	$class = ''; 
@@ -26,7 +30,7 @@
 			<div id="header">
 				<div id="logo">
 					<a href="<?php echo ROOT_URL ?>">
-						<img src="<?php echo ROOT_URL.$this->logoImg ?>" alt="" />
+						<img src="<?php echo ROOT_URL.$this->logoUrl ?>" alt="" />
 					</a>
 				</div>
 			</div>

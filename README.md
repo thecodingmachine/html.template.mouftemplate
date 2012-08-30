@@ -9,13 +9,34 @@ This means that if you are using Mouf, you can use the MoufTemplate in every pla
 MoufTemplate has 5 zones: *content*, *top*, *left*, *right* and *bottom*.
 Fill these zones using the Mouf UI.
 
-Here is a sample pseudo code:
+Here is a sample code:
 
 ```php
-// Let's access the "content" block:
-Mouf::getContent()->addText("Hello world!");
-Mouf::getLeftBlock()->addText("My left block!");
+<?php 
+// Let's import all required classes
+use Mouf\Html\Template\MoufTemplate\MoufTemplate;
+use Mouf\Html\HtmlElement\HtmlBlock;
 
-// Let's write the template:
-Mouf::getTemplate()->toHtml();
+define ('ROOT_URL', "/composertest/");
+
+require_once 'vendor/autoload.php';
+
+// WARNING! this code is only to explain the inner workings of the MoufTemplate class
+// Usually, you would never create a new instance of MoufTemplate, nor would you create 
+// the $contentBlock or $leftBlock variables.
+// Those are created and injected by Mouf, for you.
+
+// Let's define the main content block
+$contentBlock = new HtmlBlock();
+$contentBlock->addText("Hello world!");
+
+// Let's define the left content block
+$leftBlock = new HtmlBlock();
+$leftBlock->addText("My left menu!");
+
+// Let's display the template
+$template = new MoufTemplate();
+$template->setContent($contentBlock);
+$template->setLeft($leftBlock);
+$template->toHtml();
 ```
