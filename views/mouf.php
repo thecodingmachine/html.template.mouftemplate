@@ -17,12 +17,26 @@
 	</head>
 	<?php
 	$class = ''; 
-	if (count($this->left) != 0)
-		$class .= 'sidebar-left-body';
-	if (count($this->right) != 0) {
-		if($class)
-			$class .= ' ';
-		$class .= 'sidebar-right-body';
+	if ($this->left != null) {
+		ob_start();
+		$this->left->toHtml();
+		$leftHtml = ob_get_flush();
+		
+		if ($leftHtml) {
+			$class .= 'sidebar-left-body';
+		}
+	}
+	if ($this->right != null) {
+		ob_start();
+		$this->right->toHtml();
+		$rightHtml = ob_get_flush();
+		
+		
+		if ($rightHtml) {
+			if($class)
+				$class .= ' ';
+			$class .= 'sidebar-right-body';
+		}
 	}
 	?>
 	<body class="<?php echo $class ?>">
@@ -37,14 +51,14 @@
 			<?php if ($this->header != null) { ?>
 				<?php $this->header->toHtml();?>
 			<?php } ?>
-			<?php if ($this->left != null) { ?>
+			<?php if ($leftHtml != null) { ?>
 				<div id="sidebar-left" class="sidebar">
-					<?php $this->left->toHtml();?>
+					<?php echo $leftHtml;?>
 				</div>
 			<?php } ?>
-			<?php if ($this->right != null) { ?>
+			<?php if ($rightHtml != null) { ?>
 				<div id="sidebar-right" class="sidebar">
-						<?php $this->right->toHtml();?>
+						<?php echo $rightHtml;?>
 				</div>
 			<?php } ?>
 				

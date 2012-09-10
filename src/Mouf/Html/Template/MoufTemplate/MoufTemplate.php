@@ -18,35 +18,25 @@ use Mouf\Html\HtmlElement\HtmlElementInterface;
 class MoufTemplate extends BaseTemplate  {
 
 	const TEMPLATE_ROOT_URL = "vendor/mouf/html.template.mouftemplate/"; 
-	
-	/**
-	 * The main content of the page is displayed in this block.
-	 * 
-	 * @Property
-	 * @var HtmlElementInterface
-	 */
-	public $content;
+
 	
 	/**
 	 * The left menu of the template.
 	 * 
-	 * @Property
 	 * @var HtmlElementInterface
 	 */
-	public $left;
+	protected $left;
 	
 	/**
 	 * The right menu of the template.
 	 * 
-	 * @Property
 	 * @var HtmlElementInterface
 	 */
-	public $right;
+	protected $right;
 	
 	/**
 	 * The header of the template.
 	 * 
-	 * @Property
 	 * @var HtmlElementInterface
 	 */
 	public $header;
@@ -54,10 +44,9 @@ class MoufTemplate extends BaseTemplate  {
 	/**
 	 * The footer of the template.
 	 * 
-	 * @Property
 	 * @var HtmlElementInterface
 	 */
-	public $footer;
+	protected $footer;
 	
 	/**
 	 * The URL of the favicon, relative to the ROOT_URL.
@@ -93,16 +82,6 @@ class MoufTemplate extends BaseTemplate  {
 		header('Content-Type: text/html; charset=utf-8');
 
 		include __DIR__."/../../../../../views/mouf.php";
-	}
-	
-	/**
-	 * The main content of the page is displayed in this block.
-	 * 
-	 * @Property
-	 * @param HtmlElementInterface $content
-	 */
-	public function setContent(HtmlElementInterface $content) {
-		$this->content = $content;
 	}
 	
 	/**
