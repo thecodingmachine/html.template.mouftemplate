@@ -20,7 +20,8 @@
 	if ($this->left != null) {
 		ob_start();
 		$this->left->toHtml();
-		$leftHtml = ob_get_flush();
+		$leftHtml = ob_get_contents();
+		ob_end_clean();
 		
 		if ($leftHtml) {
 			$class .= 'sidebar-left-body';
@@ -29,7 +30,8 @@
 	if ($this->right != null) {
 		ob_start();
 		$this->right->toHtml();
-		$rightHtml = ob_get_flush();
+		$rightHtml = ob_get_contents();
+		ob_end_clean();
 		
 		
 		if ($rightHtml) {
