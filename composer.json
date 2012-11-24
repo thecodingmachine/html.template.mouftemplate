@@ -3,7 +3,7 @@
     "description": "This package contains a template for the Mouf administration interface. The content is automatically adjusted to the website page to use all the width. Anyway, you can use this component as a model if you like.",
     "keywords": ["template", "mouf", "mouftemplate"],
     "homepage": "https://github.com/thecodingmachine/html.template.mouftemplate",
-    "type": "library",
+    "type": "mouf-library",
     "license": "MIT",
     "authors": [
         {
